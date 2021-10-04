@@ -1,1 +1,9 @@
-This is some sample text.
+How to use git:
+
+- first create a local folder in which you keep your project
+- from GitHub, copy the link of the repository you created
+- in Visual Studio Code, open New Terminal, type in: git clone ----URL of repository----
+- then create a file. If you write git status, it should show that there are "No commits yet"
+- Type in the following command to add the file: git add ----name of file---- or "." for all files
+- git commit -m "message" to commit the file/files. git status should now show that changes have been commited.
+However, the file/files has not been added to GitHub. In order to add it, type in git push.
