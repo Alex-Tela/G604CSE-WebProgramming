@@ -13,6 +13,9 @@ for i in range(n):
             if (int(details[x]) >= 0 or int(details[x]) <= 100):
                 incorrect -= 1
 
+        if (incorrect != 0):
+            incorrect = 3 # we reinitialize to 3, because otherwise it can become negative
+
     l = []
     for i in range(1, len(details)):
         l.append(int(details[i]))

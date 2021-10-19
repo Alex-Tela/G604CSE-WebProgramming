@@ -69,3 +69,100 @@ elif (variable1 == variable3):
     print("variable1 and variable3 are equal")
 else:
     print("They are not equal")
+
+
+
+#LOOPS
+
+#FOR loop
+
+l1 = [1, 2, 3, 4]
+for elem in l1:
+    a = elem ** 3
+    print(a)
+
+print("Done!")
+
+for i, e in enumerate(l1):  # i = index, e = element
+    if i > 2:
+        print(i, e)
+
+s = 0
+for i in range(0, 100):
+    s = s + 1
+
+print(f"Average of first 99 numbers is: {s/99}")
+
+
+#WHILE loop
+
+n = 0
+while n < 2 or n > 10:
+    print("Please enter a number between 2 and 10")
+    n = int(input())
+
+print("Done!")
+
+
+#FUNCTIONS
+
+def sum_numbers(n, p=0):
+    s = 0
+    for i in range(0, n):
+        s = s + i
+    print(f"Sum of the first {n-1} numbers is {s}")
+    return s
+
+def sum_numbers_raised(n, p=2):
+    s = 0
+    for i in range(0, n):
+        s = s + i ** p
+    print(f"Sum of the first {n-1} numbers raised to the power of {p} is {s}")
+    return s
+
+a = sum_numbers(10)
+b = sum_numbers(n=20, p=100)
+
+function_label = sum_numbers # we store our function in a variable
+function_label(10)
+
+l = [sum_numbers, sum_numbers_raised]
+
+for f in l:
+    f(10)
+
+
+def power(a, b):
+    return a ** b
+
+def sum_numbers_raised_to_power(n, p, power):
+    s = 0
+    for i in range(0, n):
+        s = s + power(i, p)
+    print(f"Sum of the first {n-1} numbers raised to the power of {p} is {s}")
+    return s
+
+sum_numbers_raised_to_power(10, 2, power)
+
+
+#DECORATORS - modifies a function without touching the body of the function
+
+import datetime
+# or, instead of importing the whole library: from datetime.datetime import now
+
+def my_decorator(func):
+    def wrapper():
+        print("This is happening before we call func")
+        if (datetime.datetime.now().hour <= 22):
+            func()
+        else:
+            print("Everyone is sleeping. Leave me alone")
+        print("This is happening after we call func")
+    return wrapper
+
+#We can use decorators like this
+@my_decorator
+def hello():
+    print("Hello World!")
+
+hello()
