@@ -37,19 +37,24 @@ Nouns:
 '''
 
 class Account:
-    def __init__(self, username, password, credit_card):
+    def __init__(self, username, password):
         self.username = username
         self.password = password
-        self.credit_card = credit_card
 
-    def changePassword(self, new_password):
-        if (new_password == self.password):
-            print("Change password")
-        else:
+    def changePassword(self, new_password, old_password):
+        if (old_password == self.password):
             self.password = new_password
+        else:
+            raise Exception("Invalid data provided")
 
-    def add_card(self, card):
-        self.credit_card = card
+    #def add_card(self, card):
+        #self.credit_card = card
+
+class Admin(Account):
+    def __init__(self):
+        username = 'admin'
+        password = 'pass'
+        super().__init__(username, password)
 
 '''
 FE forms collect input
@@ -59,3 +64,11 @@ BE figures out what to do ( and what resources to use)
 BE will use the resources methods and data to execute what the user requested
 BE resource will return some result (error or data)
 '''
+
+account1 = Account('alex', '123')
+print(f"Username: {account1.username}; Password: {account1.password}")
+
+admin1 = Admin()
+print(admin1.username, admin1.password)
+admin1.changePassword('new pass', 'pass')
+print(admin1.username, admin1.password)
